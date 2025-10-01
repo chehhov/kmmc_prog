@@ -1,13 +1,15 @@
 
-#!/bin/bash
+CPP_FILES="input.cpp sort.cpp output.cpp main.cpp"
+APP=example
+FOLDER=bin
 
-g++ -Wall -Wextra -std=c++11 -c main.cpp input.cpp sort.cpp output.cpp
-
-g++ main.o input.o sort.o output.o -o bubble_sort
-
-
-if [ $? -eq 0 ]; then
-    ./bubble_sort
-else
-    echo "Ошибка компиляции"
+if [ ! -d "bin" ]; then
+    mkdir -p $FOLDER
 fi
+
+if [ -f /$FOLDER/$APP ]; then rm $FOLDER/$APP
+fi
+
+g++ $CPP_FILES -o $FOLDER/$APP
+
+cd $FOLDER && ./$APP
