@@ -1,21 +1,23 @@
 #include "merge_sort.h"
 #include <iostream>
+namespace lae {
 
 void merge(int arr[], int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+    const int size_left = mid - left + 1;
+    const int size_right = right - mid;
     
-    int* leftArr = new int[n1];
-    int* rightArr = new int[n2];
+    int* leftArr = new int[size_left];
+    int* rightArr = new int[size_right];
     
-    for (int i = 0; i < n1; i++)
+    for (int i = 0; i < size_left; i++) {
         leftArr[i] = arr[left + i];
-    for (int j = 0; j < n2; j++)
+    }
+    for (int j = 0; j < size_right; j++) {
         rightArr[j] = arr[mid + 1 + j];
-    
+    }
     int i = 0, j = 0, k = left;
     
-    while (i < n1 && j < n2) {
+    while (i < size_left && j < size_right) {
         if (leftArr[i] <= rightArr[j]) {
             arr[k] = leftArr[i];
             i++;
@@ -26,13 +28,13 @@ void merge(int arr[], int left, int mid, int right) {
         k++;
     }
     
-    while (i < n1) {
+    while (i < size_left) {
         arr[k] = leftArr[i];
         i++;
         k++;
     }
     
-    while (j < n2) {
+    while (j < size_right) {
         arr[k] = rightArr[j];
         j++;
         k++;
@@ -43,9 +45,10 @@ void merge(int arr[], int left, int mid, int right) {
 }
 
 void mergeSort(int arr[], int left, int right) {
-    if (left >= right) return;
-    
-    int mid = left + (right - left) / 2;
+    if (left >= right) {
+	 return;
+    }
+    const int mid = left + (right - left) / 2;
     mergeSort(arr, left, mid);
     mergeSort(arr, mid + 1, right);
     merge(arr, left, mid, right);
@@ -56,3 +59,6 @@ void mergeSort(int arr[], int size) {
         mergeSort(arr, 0, size - 1);
     }
 }
+
+}
+
