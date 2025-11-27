@@ -7,7 +7,7 @@ int main() {
     const int size = sizeof(arr) / sizeof(arr[0]);
     
     std::cout << "Исходный массив: ";
-    lae::printArray(arr, size);
+    lay::printArray(arr, size);
     
     lae::mergeSort(arr, size);
     
