@@ -1,9 +1,11 @@
+#pragma once
+
 namespace LAlex {
-
     struct MenuItem {
-
-    const char* const title;
-    void (*func) ();
-
+        const char* title;
+        const MenuItem* (*func)(const MenuItem* current);
+        const MenuItem* parent;
+        MenuItem** children;   // убрали const
+        int children_count;
     };
 }
