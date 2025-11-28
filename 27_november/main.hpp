@@ -5,7 +5,7 @@ namespace LAlex {
         const char* title;
         const MenuItem* (*func)(const MenuItem* current);
         const MenuItem* parent;
-        MenuItem** children;   // убрали const
+        MenuItem** children;
         int children_count;
     };
 }
